@@ -87,6 +87,7 @@
       this.$parent.$children[2].bottomNav = "package";
       this.$parent.$children[2].bottomNavColor = "package";
       this.$parent.isShowStepper = true;
+      this.$parent.isShowBottom = true;
       this.$parent.$children[1].activeStep = 0;
     }
   }

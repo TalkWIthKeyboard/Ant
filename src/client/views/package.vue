@@ -14,12 +14,12 @@
         <mu-icon value="send" slot="right"/>
       </mu-list-item>
     </mu-list>
-    <Dialog></Dialog>
+    <infoDialog></infoDialog>
   </div>
 </template>
 
 <script>
-import Dialog from "../components/InfoDialog.vue"
+import infoDialog from "../components/InfoDialog.vue"
 export default{
   data(){
     return{
@@ -28,7 +28,7 @@ export default{
   },
 
   components:{
-    Dialog
+    infoDialog
   },
 
   methods: {

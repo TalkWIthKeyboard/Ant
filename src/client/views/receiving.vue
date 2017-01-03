@@ -18,14 +18,14 @@
         <mu-icon-button icon="done" @click="sureSending" slot="right"/>
       </mu-list-item>
     </mu-list>
-    <Dialog></Dialog>
+    <infoDialog></infoDialog>
   </div>
 </template>
 
 <script>
 import Tabs from "../components/Tabs.vue"
 import present from "../assets/images/present.png"
-import Dialog from "../components/InfoDialog.vue"
+import infoDialog from "../components/InfoDialog.vue"
 export default{
   data(){
     return{
@@ -35,7 +35,7 @@ export default{
 
   components: {
     Tabs,
-    Dialog
+    infoDialog
   },
 
   methods: {

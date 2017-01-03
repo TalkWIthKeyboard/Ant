@@ -31,6 +31,7 @@ function api_base(method, url, params, success, failure) {
   // 设置头
   let r = request(method, url)
     .type('text/plain')
+    .withCredentials()
     .set('Accept', 'application/json')
     .set('Content-Type', 'application/json');
 

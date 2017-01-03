@@ -5,13 +5,17 @@
                       :maxHeight="120"/>
     <mu-auto-complete hintText="请输入密码" labelFloat v-model="password" label="密码" :dataSource="dataSource"
                       :maxHeight="120"/>
-    <mu-raised-button label="提交" @click="sureEvent" class="demo-raised-button" primary/>
+    <div id="button-list">
+      <mu-raised-button label="提交" @click="sureEvent" class="demo-raised-button" primary/>
+      <mu-raised-button id="register-btn" label="注册" @click="registerEvent" class="demo-raised-button" secondary/>
+    </div>
+    <infoDialog></infoDialog>
   </div>
 </template>
 
 <script>
-  import loginUser from "../assets/images/login-man.png"
-  import infoDialog from "../components/InfoDialog.vue"
+  import loginUser from "./../assets/images/login-man.png"
+  import infoDialog from "./../components/InfoDialog.vue"
   export default{
     data(){
       return {
@@ -34,24 +38,28 @@
             'password': this.password
           })
         } else {
-          this.$children[3].next = '/user';
+          this.$children[3].next = '/login';
           this.$children[3].msg = "请输入账号与密码!";
           this.$children[3].dialog = true;
         }
       },
 
       postData: function (parmas) {
-        this.$api.post('user/login', parmas, function (data) {
+        this.$api.post('api/user/login', parmas, function (data) {
           var error = data.error || false;
           var result = data.result || false;
           if (error) {
-            this.$children[3].next = '/user';
+            this.$children[3].next = '/login';
             this.$children[3].msg = "账号或者密码错误!";
             this.$children[3].dialog = true;
           } else {
             this.$router.push({name: 'form'})
           }
         })
+      },
+
+      registerEvent() {
+
       }
     },
 
@@ -71,6 +79,16 @@
     height: 100%;
     width: 100%;
     margin-top: 9%;
+  }
+
+  #login-main #button-list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  #register-btn {
+    margin-left: 20px;
   }
 
   #login-main img {

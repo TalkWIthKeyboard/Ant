@@ -15,7 +15,6 @@
         <mu-avatar slot="left" color="#474a4f" backgroundColor="#9e9e9e">文具</mu-avatar>
       </mu-list-item>
     </mu-list>
-    <Dialog></Dialog>
   </div>
 </template>
 
