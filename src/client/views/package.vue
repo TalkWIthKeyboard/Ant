@@ -40,9 +40,9 @@ export default{
     },
 
     // 调用api获取数据
-    postData: function () {
+    getData: function () {
       var that = this;
-      var url = 'https://ant-express.picfood.cn/api/parcel/path/search/start=' + this.$route.params.start + '&end=' + this.$route.params.end;
+      var url = 'https://ant-express.picfood.cn/api/parcel/path/search?start=' + this.$route.params.start + '&end=' + this.$route.params.end;
       $.ajax({
           url: url,
           type: 'get',
@@ -64,7 +64,7 @@ export default{
   created: function () {
     this.$parent.isShowStepper = true;
     this.$parent.$children[1].activeStep = 1;
-    this.getData(this.$route.params);
+    this.getData();
   }
 }
 </script>
