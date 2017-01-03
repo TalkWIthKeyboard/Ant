@@ -27,7 +27,7 @@ let router = new VueRouter({
     component: require('./views/user.vue')
   },{
     name: 'task',
-    path: '/task',
+    path: '/task/:id',
     component: require('./views/task.vue')
   },{
     name: 'sending',
