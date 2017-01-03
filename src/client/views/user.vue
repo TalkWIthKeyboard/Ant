@@ -86,7 +86,7 @@ export default{
     this.$parent.$children[2].bottomNav = "user";
     this.$parent.$children[2].bottomNavColor = "user";
     this.$parent.isShowStepper = false;
-    this.$parent.isShowButton = true;
+    this.$parent.isShowBottom = true;
     this.getData();
   }
 }
