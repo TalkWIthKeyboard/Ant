@@ -24,12 +24,11 @@
 
 <script>
 import Tabs from "../components/Tabs.vue"
-import present from "../assets/images/present.png"
 import infoDialog from "../components/InfoDialog.vue"
 export default{
   data(){
     return{
-      present
+      present: "http://oj7mt8loy.bkt.clouddn.com/present.png"
     }
   },
 

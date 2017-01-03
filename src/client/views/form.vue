@@ -11,12 +11,11 @@
 </template>
 
 <script>
-  import transport from "../assets/images/public-transport.png"
   import infoDialog from "../components/InfoDialog.vue"
   export default {
     data () {
       return {
-        transport,
+        transport: "http://oj7mt8loy.bkt.clouddn.com/public-transport.png",
         dataSource: ["通河新村", "彭浦新村", "九亭", "徐家汇", "莘庄", "上海火车站",
           "漕河泾开发区", "共康路", "共富新村", "陕西南路", "淞虹路", "延长路", "陆家嘴",
           "上海马戏城", "七宝", "中山公园", "莲花路", "南京西路", "徐泾东", "泗泾", "汶水路",

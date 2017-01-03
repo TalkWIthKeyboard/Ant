@@ -43,7 +43,7 @@ export default{
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background: rgba(0,0,0,.8) url("../assets/images/close_icon.png") no-repeat center;
+    background: rgba(0,0,0,.8) url("http://oj7mt8loy.bkt.clouddn.com/close_icon.png") no-repeat center;
     background-size: 25px;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -55,7 +55,7 @@ export default{
   }
 
   .toggleContral {
-    background: rgba(0,0,0,.8) url("../assets/images/open_icon.png") no-repeat center;
+    background: rgba(0,0,0,.8) url("http://oj7mt8loy.bkt.clouddn.com/open_icon.png") no-repeat center;
     background-size: 25px !important;
    }
 

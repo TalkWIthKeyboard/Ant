@@ -11,7 +11,6 @@
 </template>
 
 <script>
-  import loginUser from "./../assets/images/login-man.png"
   import infoDialog from "./../components/InfoDialog.vue"
   import $ from 'jquery'
   export default{
@@ -20,7 +19,7 @@
         account: "",
         password: "",
         dataSource: [],
-        loginUser
+        loginUser: "http://oj7mt8loy.bkt.clouddn.com/login-man.png"
       }
     },
 

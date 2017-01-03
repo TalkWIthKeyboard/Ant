@@ -2,7 +2,7 @@
   <div id="head-main">
     <div id="head-user-info">
       <mu-avatar style="height: 150px;width: 150px" slot="left" :src="headerImg"/>
-      <p style="font-size: 18px;font-weight: 800">Harry Porter</p>
+      <p style="font-size: 18px;font-weight: 800">{{ item.name }}</p>
     </div>
 
     <div id="head-table">
@@ -41,28 +41,45 @@
 </template>
 
 <script>
-import headerImg from "../assets/images/hali.jpg"
-import manImg from "../assets/images/man.png"
-import womanImg from "../assets/images/woman.png"
-import giftImg from "../assets/images/gift.png"
-import truckImg from "../assets/images/delivery-truck.png"
-import skateImg from "../assets/images/ice-skate.png"
-import christmasImg from "../assets/images/christmas.png"
-
 export default{
   data(){
     return{
-      headerImg,
-      manImg,
-      womanImg,
-      giftImg,
-      truckImg,
-      skateImg,
-      christmasImg
+      headerImg: "http://oj7mt8loy.bkt.clouddn.com/hali.jpg",
+      manImg: "http://oj7mt8loy.bkt.clouddn.com/man.png",
+      womanImg: "http://oj7mt8loy.bkt.clouddn.com/woman.png",
+      giftImg: "http://oj7mt8loy.bkt.clouddn.com/gift.png",
+      truckImg: "http://oj7mt8loy.bkt.clouddn.com/delivery-truck.png",
+      skateImg: "http://oj7mt8loy.bkt.clouddn.com/ice-skate.png",
+      christmasImg: "http://oj7mt8loy.bkt.clouddn.com/christmas.png",
+      item: {
+        name: null
+      }
     }
   },
 
   components:{
+  },
+
+  methods: {
+    getData: function () {
+      var that = this;
+      var url = 'https://ant-express.picfood.cn/api/user/test';
+      $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'json',
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (data) {
+            that.item = data.result.user;
+          },
+          error: function (data) {
+            console.log("error " + data);
+          }
+        }
+      )
+    }
   },
 
   created: function() {
@@ -70,6 +87,7 @@ export default{
     this.$parent.$children[2].bottomNavColor = "user";
     this.$parent.isShowStepper = false;
     this.$parent.isShowButton = true;
+    this.getData();
   }
 }
 </script>

@@ -24,12 +24,11 @@
 
 <script>
 import Tabs from "../components/Tabs.vue"
-import train from "../assets/images/train.png"
 import infoDialog from "../components/InfoDialog.vue"
 export default{
   data(){
     return{
-      train
+      train: "http://oj7mt8loy.bkt.clouddn.com/train.png"
     }
   },
 

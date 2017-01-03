@@ -20,11 +20,10 @@
 
 <script>
 import Tabs from "../components/Tabs.vue"
-import history from "../assets/images/clinic-history.png"
 export default{
   data(){
     return{
-      history
+      history: "http://oj7mt8loy.bkt.clouddn.com/clinic-history.png"
     }
   },
 
