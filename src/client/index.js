@@ -10,6 +10,7 @@ import VueResource from 'vue-resource'
 import router from './routers'
 import api from './config/api'
 
+
 //开启debug模式
 Vue.config.debug = true;
 // 加载网络库

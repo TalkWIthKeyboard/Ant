@@ -2,8 +2,8 @@
  * Created by CoderSong on 17/1/2.
  */
 // 引用superagent
-let request = require('superagent');
-let root = 'http://ant-express.picfood.cn';
+import $ from 'jquery'
+let root = 'https://ant-express.picfood.cn';
 
 // 自定义判断元素类型JS
 function toType(obj) {
@@ -27,56 +27,46 @@ function filter_null(params) {
 }
 
 // 封装api调用
-function api_base(method, url, params, success, failure) {
-  // 设置头
-  let r = request(method, url)
-    .type('text/plain')
-    .withCredentials()
-    .set('Accept', 'application/json')
-    .set('Content-Type', 'application/json');
+function ajaxHeadler(method, url, params, success, failure) {
+  var headler = {
+    url: url,
+    type: method,
+    beforeSend: function(request) {
+      request.setRequestHeader("Accept", "application/json");
+    },
+    xhrFields: {
+      withCredentials: true
+    },
+    success: success(data),
+    error: failure(data)
+  };
 
   if (params) {
     params = filter_null(params);
     if (method === 'POST' || method === 'PUT') {
       if (toType(params) == 'object') {
         params = JSON.stringify(params);
+        headler.data = params;
+        $.ajax(headler);
       }
-      r = r.send(params)
     } else if (method == 'GET' || method === 'DELETE') {
-      r = r.query(params)
+      $.ajax(headler);
     }
   }
-  r.end(function (err, res) {
-    if (err) {
-      // alert('api error, HTTP CODE: ' + res.status);
-      return;
-    }
-    if (res.body.result) {
-      if (success) {
-        success(res.body);
-      }
-    } else {
-      if (failure) {
-        failure(res.body);
-      } else {
-        alert('error: ' + JSON.stringify(res.body));
-      }
-    }
-  });
 }
 
 // 封装get post put delete方法
 export default {
   get: function (url, params, success, failure) {
-    return api_base('GET', root + '/' + url, params, success, failure)
+    return ajaxHeadler('GET', root + '/' + url, params, success, failure)
   },
   post: function (url, params, success, failure) {
-    return api_base('POST', root + '/' + url, params, success, failure)
+    return ajaxHeadler('POST', root + '/' + url, params, success, failure)
   },
   put: function (url, params, success, failure) {
-    return api_base('PUT', root + '/' + url, params, success, failure)
+    return ajaxHeadler('PUT', root + '/' + url, params, success, failure)
   },
   delete: function (url, params, success, failure) {
-    return api_base('DELETE', root + '/' + url, params, success, failure)
+    return ajaxHeadler('DELETE', root + '/' + url, params, success, failure)
   },
 }

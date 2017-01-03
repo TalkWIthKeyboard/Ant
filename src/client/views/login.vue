@@ -16,6 +16,7 @@
 <script>
   import loginUser from "./../assets/images/login-man.png"
   import infoDialog from "./../components/InfoDialog.vue"
+  import $ from 'jquery'
   export default{
     data(){
       return {
@@ -33,40 +34,51 @@
     methods: {
       sureEvent() {
         if (this.account != "" && this.password != "") {
-          this.postData({
-            'mobile': this.account,
-            'password': this.password
-          })
+          this.postData()
         } else {
-          this.$children[3].next = '/login';
-          this.$children[3].msg = "请输入账号与密码!";
-          this.$children[3].dialog = true;
+          this.$children[4].next = '#/login';
+          this.$children[4].msg = "请输入账号与密码!";
+          this.$children[4].dialog = true;
         }
       },
 
-      postData: function (parmas) {
-        this.$api.post('api/user/login', parmas, function (data) {
-          var error = data.error || false;
-          var result = data.result || false;
-          if (error) {
-            this.$children[3].next = '/login';
-            this.$children[3].msg = "账号或者密码错误!";
-            this.$children[3].dialog = true;
-          } else {
-            this.$router.push({name: 'form'})
+      postData: function () {
+        var that = this;
+        $.ajax({
+          url: 'https://ant-express.picfood.cn/api/user/login',
+          type: 'post',
+          data: {
+            'mobile': that.account,
+            'password': that.password
+          },
+//          beforeSend: function (request) {
+//            request.setRequestHeader("Accept", "application/x-www-form-urlencoded");
+//          },
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (data) {
+            that.$router.push({name: 'login'})
+          },
+          error: function (data) {
+            that.$children[4].next = '#/login';
+            that.$children[4].msg = "账号与密码错误!";
+            that.$children[4].dialog = true;
           }
-        })
-      },
-
-      registerEvent() {
-
       }
-    },
+  )
+  },
 
-    created: function () {
-      this.$parent.isShowBottom = false;
-      this.$parent.isShowStepper = false;
-    }
+  registerEvent()
+  {
+
+  }
+  },
+
+  created: function () {
+    this.$parent.isShowBottom = false;
+    this.$parent.isShowStepper = false;
+  }
   }
 </script>
 
