@@ -67,12 +67,9 @@
     },
 
     created: function () {
-      var that = this;
       this.$parent.isShowStepper = true;
       this.$parent.$children[1].activeStep = 1;
-      setTimeout(function () {
-        that.getData();
-      }, 5000)
+      this.getData();
     }
   }
 </script>
