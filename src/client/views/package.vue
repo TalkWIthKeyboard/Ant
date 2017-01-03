@@ -1,18 +1,19 @@
 <template>
   <div id="package-main">
     <mu-list style="height: 100%;">
-      <mu-list-item title="生活用品" describeText="500 g">
+
+      <mu-list-item v-for="item in lists" v-bind:title="item.content" v-bind:describeText="item.weight">
         <mu-avatar icon="restaurant_menu" slot="leftAvatar"/>
         <mu-icon value="send" slot="right"/>
       </mu-list-item>
-      <mu-list-item title="生活用品" describeText="300 g">
-        <mu-avatar icon="restaurant_menu" slot="leftAvatar"/>
-        <mu-icon-button icon="send" @click="open" slot="right"/>
-      </mu-list-item>
-      <mu-list-item title="文具" describeText="700 g">
-        <mu-avatar icon="create" slot="leftAvatar"/>
-        <mu-icon value="send" slot="right"/>
-      </mu-list-item>
+      <!--<mu-list-item title="生活用品" describeText="300 g">-->
+        <!--<mu-avatar icon="restaurant_menu" slot="leftAvatar"/>-->
+        <!--<mu-icon-button icon="send" @click="open" slot="right"/>-->
+      <!--</mu-list-item>-->
+      <!--<mu-list-item title="文具" describeText="700 g">-->
+        <!--<mu-avatar icon="create" slot="leftAvatar"/>-->
+        <!--<mu-icon value="send" slot="right"/>-->
+      <!--</mu-list-item>-->
     </mu-list>
     <infoDialog></infoDialog>
   </div>
@@ -51,7 +52,8 @@ export default{
             withCredentials: true
           },
           success: function (data) {
-            console.log("success " + data);
+            lists = data.result;
+
           },
           error: function (data) {
             console.log("error " + data);
