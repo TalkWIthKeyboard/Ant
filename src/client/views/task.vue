@@ -16,7 +16,15 @@ export default{
   data(){
     return{
       qrCode: "http://oj7mt8loy.bkt.clouddn.com/qrCode.jpg",
-      item: null
+      item: {
+        parcel: {
+          senderAddress: null,
+          receiverAddress: null,
+          content: null,
+          str: null
+        },
+        createdAt: null
+      }
     }
   },
 
