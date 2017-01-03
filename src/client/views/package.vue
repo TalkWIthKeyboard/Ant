@@ -2,7 +2,7 @@
   <div id="package-main">
     <mu-list style="height: 100%;">
 
-      <mu-list-item v-for="item in lists" v-bind:title="item.content" v-bind:describeText="item.str">
+      <mu-list-item v-for="item in lists" v-bind:title="item.parcel.content" v-bind:describeText="item.parcel.str">
         <mu-avatar icon="restaurant_menu" slot="leftAvatar"/>
         <mu-icon value="send" slot="right" @click="open(item._id)"/>
       </mu-list-item>

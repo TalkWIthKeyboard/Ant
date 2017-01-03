@@ -2,11 +2,11 @@
   <div id="task-main">
     <img :src="qrCode">
     <div id="cell-list">
-      <mt-cell title="起点" value="上海汽车城"></mt-cell>
-      <mt-cell title="终点" value="同济大学"></mt-cell>
-      <mt-cell title="物品" value="生活用品"></mt-cell>
-      <mt-cell title="重量" value="900g"></mt-cell>
-      <mt-cell title="创建时间" value="2016-10-25 00:49:40"></mt-cell>
+      <mt-cell title="起点" :value="item.parcel.senderAddress"></mt-cell>
+      <mt-cell title="终点" value="item.parcel.receiverAddress"></mt-cell>
+      <mt-cell title="物品" value="item.parcel.content"></mt-cell>
+      <mt-cell title="重量" value="item.parcel.str"></mt-cell>
+      <mt-cell title="创建时间" value="item.createdAt"></mt-cell>
     </div>
   </div>
 </template>
@@ -16,12 +16,38 @@ import qrCode from "../assets/images/qrCode.jpg"
 export default{
   data(){
     return{
-      qrCode
+      qrCode,
+      item: null
     }
   },
 
   components:{
 
+  },
+
+  methods: {
+    // 调用api获取数据
+    getData: function () {
+      var that = this;
+      var url = '/api/parcel/path/confirm?id=' + this.$route.params.id;
+      $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'json',
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (data) {
+            that.item = data.result;
+            that.item.parcel.str = that.item.parcel.weight + " " + that.item.parcel.unit;
+            console.log(that.lists);
+          },
+          error: function (data) {
+            console.log("error " + data);
+          }
+        }
+      )
+    }
   },
 
   created: function () {
