@@ -28,7 +28,7 @@ export default{
     },
     goToAnther() {
       this.close();
-      this.$parent.$router.push = ({ path: this.next });
+      this.$parent.$router.push = ({ path : this.next });
     }
   }
 }

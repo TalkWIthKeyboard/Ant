@@ -5,10 +5,7 @@
                       :maxHeight="120"/>
     <mu-auto-complete hintText="请输入密码" labelFloat v-model="password" label="密码" :dataSource="dataSource"
                       :maxHeight="120"/>
-    <div id="button-list">
-      <mu-raised-button label="提交" @click="sureEvent" class="demo-raised-button" primary/>
-      <mu-raised-button id="register-btn" label="注册" @click="registerEvent" class="demo-raised-button" secondary/>
-    </div>
+    <mu-raised-button label="提交" @click="sureEvent" class="demo-raised-button" primary/>
     <infoDialog></infoDialog>
   </div>
 </template>
@@ -36,49 +33,43 @@
         if (this.account != "" && this.password != "") {
           this.postData()
         } else {
-          this.$children[4].next = '#/login';
-          this.$children[4].msg = "请输入账号与密码!";
-          this.$children[4].dialog = true;
+          console.log(this.$children);
+          this.$children[3].next = '#/login';
+          this.$children[3].msg = "请输入账号与密码!";
+          this.$children[3].dialog = true;
         }
       },
 
       postData: function () {
         var that = this;
         $.ajax({
-          url: 'https://ant-express.picfood.cn/api/user/login',
-          type: 'post',
-          data: {
-            'mobile': that.account,
-            'password': that.password
-          },
-//          beforeSend: function (request) {
-//            request.setRequestHeader("Accept", "application/x-www-form-urlencoded");
-//          },
-          xhrFields: {
-            withCredentials: true
-          },
-          success: function (data) {
-            that.$router.push({name: 'login'})
-          },
-          error: function (data) {
-            that.$children[4].next = '#/login';
-            that.$children[4].msg = "账号与密码错误!";
-            that.$children[4].dialog = true;
+            url: 'https://ant-express.picfood.cn/api/user/login',
+            type: 'post',
+            data: {
+              'mobile': that.account,
+              'password': that.password
+            },
+            dataType: 'json',
+            xhrFields: {
+              withCredentials: true
+            },
+            success: function (data) {
+              that.$router.push({name: 'index'})
+            },
+            error: function (data) {
+              that.$children[3].next = '#/login';
+              that.$children[3].msg = "账号与密码错误!";
+              that.$children[3].dialog = true;
+            }
           }
+        )
       }
-  )
-  },
+    },
 
-  registerEvent()
-  {
-
-  }
-  },
-
-  created: function () {
-    this.$parent.isShowBottom = false;
-    this.$parent.isShowStepper = false;
-  }
+    created: function () {
+      this.$parent.isShowBottom = false;
+      this.$parent.isShowStepper = false;
+    }
   }
 </script>
 

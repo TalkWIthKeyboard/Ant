@@ -14,7 +14,7 @@ let router = new VueRouter({
     component: require('./views/login.vue')
   },
   {
-    name: 'form',
+    name: 'index',
     path: '/index',
     component: require('./views/form.vue')
   }, {

@@ -40,11 +40,24 @@ export default{
     },
 
     // 调用api获取数据
-    getData: function(params) {
-      this.$api.get('api/parcel/path/search', params, function(r) {
-        this.lists = r.result;
-        console.log(this.lists);
-      })
+    postData: function () {
+      var that = this;
+      var url = 'https://ant-express.picfood.cn/api/parcel/path/search/start=' + this.$route.params.start + '&end=' + this.$route.params.end;
+      $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'json',
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (data) {
+            console.log("success " + data);
+          },
+          error: function (data) {
+            console.log("error " + data);
+          }
+        }
+      )
     }
   },
 

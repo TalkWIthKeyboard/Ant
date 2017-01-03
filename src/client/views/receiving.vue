@@ -40,7 +40,7 @@ export default{
 
   methods: {
     sureSending() {
-      this.$children[2].next = '/index';
+      this.$children[2].next = '#/index';
       this.$children[2].msg = "确认开始运送快递？";
       this.$children[2].dialog = true;
     }
