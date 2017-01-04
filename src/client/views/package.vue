@@ -6,14 +6,6 @@
         <mu-avatar icon="restaurant_menu" slot="leftAvatar"/>
         <mu-icon value="send" slot="right" @click="open(item._id)"/>
       </mu-list-item>
-      <!--<mu-list-item title="生活用品" describeText="300 g">-->
-      <!--<mu-avatar icon="restaurant_menu" slot="leftAvatar"/>-->
-      <!--<mu-icon-button icon="send" @click="open(2)" slot="right"/>-->
-      <!--</mu-list-item>-->
-      <!--<mu-list-item title="文具" describeText="700 g">-->
-      <!--<mu-avatar icon="create" slot="leftAvatar"/>-->
-      <!--<mu-icon value="send" slot="right"/>-->
-      <!--</mu-list-item>-->
     </mu-list>
     <infoDialog></infoDialog>
   </div>
@@ -21,6 +13,7 @@
 
 <script>
   import infoDialog from "../components/InfoDialog.vue"
+  import moment from "moment"
   export default{
     data(){
       return {
@@ -55,6 +48,7 @@
               that.lists = data.result;
               for (var index = 0; index < that.lists.length; index++) {
                 that.lists[index].parcel.str = that.lists[index].parcel.weight + " " + that.lists[index].parcel.unit;
+                that.lists[index].time = new moment(that.createdAt).format('MMMM Do YYYY');
               }
               console.log(that.lists);
             },

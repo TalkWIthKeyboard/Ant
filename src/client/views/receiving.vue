@@ -5,17 +5,9 @@
       <img :src="present"/>
     </div>
     <mu-list style="height: 100%;">
-      <mu-list-item title="0.95kg" describeText="Jan 9, 2016">
-        <mu-avatar slot="left" color="#474a4f" backgroundColor="#9e9e9e">上衣</mu-avatar>
-        <mu-icon-button icon="done" @click="sureSending" slot="right"/>
-      </mu-list-item>
-      <mu-list-item title="0.75kg" describeText="Jan 10, 2016">
-        <mu-avatar slot="left" color="#474a4f" backgroundColor="#9e9e9e">生活用品</mu-avatar>
-        <mu-icon-button icon="done" @click="sureSending" slot="right"/>
-      </mu-list-item>
-      <mu-list-item title="0.4kg" describeText="Jan 25, 2016">
-        <mu-avatar slot="left" color="#474a4f" backgroundColor="#9e9e9e">文具</mu-avatar>
-        <mu-icon-button icon="done" @click="sureSending" slot="right"/>
+      <mu-list-item v-for="item in lists" :title="item.parcel.str" :describeText="item.time">
+        <mu-avatar slot="left" color="#474a4f" backgroundColor="#9e9e9e">{{ item.parcel.content }}</mu-avatar>
+        <mu-icon-button icon="done" @click="sureSending(item._id)" slot="right"/>
       </mu-list-item>
     </mu-list>
     <infoDialog></infoDialog>
@@ -23,59 +15,63 @@
 </template>
 
 <script>
-import Tabs from "../components/Tabs.vue"
-import infoDialog from "../components/InfoDialog.vue"
-export default{
-  data(){
-    return{
-      present: "http://oj7mt8loy.bkt.clouddn.com/present.png"
-    }
-  },
-
-  components: {
-    Tabs,
-    infoDialog
-  },
-
-  methods: {
-    sureSending() {
-      this.$children[2].next = '#/index';
-      this.$children[2].msg = "确认开始运送快递？";
-      this.$children[2].dialog = true;
+  import Tabs from "../components/Tabs.vue"
+  import infoDialog from "../components/InfoDialog.vue"
+  import moment from 'moment'
+  export default{
+    data(){
+      return {
+        present: "http://oj7mt8loy.bkt.clouddn.com/present.png",
+        lists: []
+      }
     },
 
-    getData: function () {
-      var that = this;
-      var url = 'https://ant-express.picfood.cn/api/order/confirmed';
-      $.ajax({
-          url: url,
-          type: 'get',
-          dataType: 'json',
-          xhrFields: {
-            withCredentials: true
-          },
-          success: function (data) {
-            that.item = data.result;
-            console.log(data);
-//            that.item.parcel.str = that.item.parcel.weight + " " + that.item.parcel.unit;
-          },
-          error: function (data) {
-            console.log("error " + data);
+    components: {
+      Tabs,
+      infoDialog
+    },
+
+    methods: {
+      sureSending(id) {
+        this.$children[2].next = '#/index';
+        this.$children[2].msg = "确认开始运送快递？";
+        this.$children[2].dialog = true;
+      },
+
+      getData: function () {
+        var that = this;
+        var url = 'https://ant-express.picfood.cn/api/order/confirmed';
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            xhrFields: {
+              withCredentials: true
+            },
+            success: function (data) {
+              that.lists = data.result;
+              for (var index = 0; index < that.lists.length; index++) {
+                that.lists[index].parcel.str = that.lists[index].parcel.weight + " " + that.lists[index].parcel.unit;
+                that.lists[index].time = new moment(that.createdAt).format('MMMM Do YYYY');
+              }
+            },
+            error: function (data) {
+              console.log("error " + data);
+            }
           }
-        }
-      )
+        )
+      }
+    },
+
+    created: function () {
+      this.$parent.isShowStepper = false;
+      this.getData();
+    },
+
+    mounted: function () {
+      this.$children[0].activeTab = 'tab1';
     }
-  },
-
-  created: function() {
-    this.$parent.isShowStepper = false;
-    this.getData();
-  },
-
-  mounted: function() {
-    this.$children[0].activeTab = 'tab1';
   }
-}
 
 </script>
 

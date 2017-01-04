@@ -6,12 +6,13 @@
       <mt-cell title="终点" :value="item.parcelPath.end"></mt-cell>
       <mt-cell title="物品" :value="item.parcel.content"></mt-cell>
       <mt-cell title="重量" :value="item.parcel.str"></mt-cell>
-      <mt-cell title="创建时间" value="item.createdAt"></mt-cell>
+      <mt-cell title="创建时间" value="item.time"></mt-cell>
     </div>
   </div>
 </template>
 
 <script>
+  import moment from "moment"
   export default{
     data(){
       return {
@@ -47,6 +48,7 @@
             success: function (data) {
               that.item = data.result;
               that.item.parcel.str = that.item.parcel.weight + " " + that.item.parcel.unit;
+              that.item.time = new moment(that.createdAt).format('MMMM Do YYYY');
             },
             error: function (data) {
               console.log("error " + data);
