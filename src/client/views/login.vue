@@ -3,7 +3,7 @@
     <img :src="loginUser">
     <mu-auto-complete hintText="请输入账号（手机号）" labelFloat v-model="account" label="账号" :dataSource="dataSource"
                       :maxHeight="120"/>
-    <mu-auto-complete hintText="请输入密码" labelFloat v-model="password" label="密码" :dataSource="dataSource"
+    <mu-auto-complete hintText="请输入密码" labelFloat v-model="showPassword" label="密码" :dataSource="dataSource" @blur="passwordInput"
                       :maxHeight="120"/>
     <mu-raised-button label="提交" @click="sureEvent" class="demo-raised-button" primary/>
     <closeDialog></closeDialog>
@@ -19,7 +19,8 @@
         account: "",
         password: "",
         dataSource: [],
-        loginUser: "http://oj7mt8loy.bkt.clouddn.com/login-man.png"
+        loginUser: "http://oj7mt8loy.bkt.clouddn.com/login-man.png",
+        showPassword: ""
       }
     },
 
@@ -60,6 +61,15 @@
             }
           }
         )
+      },
+
+      passwordInput: function () {
+        var starStr = "";
+        for (var index = 0; index < this.showPassword.length; index ++) {
+          starStr += '*';
+        }
+        this.password = this.showPassword;
+        this.showPassword = starStr;
       }
     },
 
