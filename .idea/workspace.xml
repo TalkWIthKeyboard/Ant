@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd912a80-fb7c-43e2-b00c-445878e1acc2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/views/task.vue" afterPath="$PROJECT_DIR$/src/client/views/task.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/views/receiving.vue" afterPath="$PROJECT_DIR$/src/client/views/receiving.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="task.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="task.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/views/task.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="6" selection-end-line="55" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -52,6 +51,18 @@
             <state relative-caret-position="120">
               <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="receiving.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/views/receiving.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+              <folding>
+                <element signature="e#980#1021#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,7 +138,6 @@
         <option value="$PROJECT_DIR$/src/client/views/package.vue" />
         <option value="$PROJECT_DIR$/src/client/components/BottomNavigation.vue" />
         <option value="$PROJECT_DIR$/src/client/views/sending.vue" />
-        <option value="$PROJECT_DIR$/src/client/views/receiving.vue" />
         <option value="$PROJECT_DIR$/src/client/views/history.vue" />
         <option value="$PROJECT_DIR$/src/server/views/index.jade" />
         <option value="$PROJECT_DIR$/src/client/views/user.vue" />
@@ -135,6 +145,7 @@
         <option value="$PROJECT_DIR$/src/client/views/form.vue" />
         <option value="$PROJECT_DIR$/src/client/views/login.vue" />
         <option value="$PROJECT_DIR$/src/client/views/task.vue" />
+        <option value="$PROJECT_DIR$/src/client/views/receiving.vue" />
       </list>
     </option>
   </component>
@@ -382,12 +393,12 @@
       <option name="presentableId" value="Default" />
       <updated>1483416853771</updated>
       <workItem from="1483416855077" duration="4918000" />
-      <workItem from="1483426781445" duration="21658000" />
+      <workItem from="1483426781445" duration="22123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26576000" />
+    <option name="totallyTimeSpent" value="27041000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -584,7 +595,7 @@
         <state relative-caret-position="160">
           <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -612,14 +623,6 @@
           <folding>
             <element signature="e#129#167#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/views/receiving.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -733,9 +736,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/views/task.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="6" selection-end-line="55" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/views/receiving.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+          <folding>
+            <element signature="e#980#1021#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

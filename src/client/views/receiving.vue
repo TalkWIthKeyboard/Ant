@@ -42,11 +42,34 @@ export default{
       this.$children[2].next = '#/index';
       this.$children[2].msg = "确认开始运送快递？";
       this.$children[2].dialog = true;
+    },
+
+    getData: function () {
+      var that = this;
+      var url = 'https://ant-express.picfood.cn/api/order/confirmed';
+      $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'json',
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function (data) {
+            that.item = data.result;
+            console.log(data);
+//            that.item.parcel.str = that.item.parcel.weight + " " + that.item.parcel.unit;
+          },
+          error: function (data) {
+            console.log("error " + data);
+          }
+        }
+      )
     }
   },
 
   created: function() {
     this.$parent.isShowStepper = false;
+    this.getData();
   },
 
   mounted: function() {
