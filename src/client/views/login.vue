@@ -6,12 +6,12 @@
     <mu-auto-complete hintText="请输入密码" labelFloat v-model="password" label="密码" :dataSource="dataSource"
                       :maxHeight="120"/>
     <mu-raised-button label="提交" @click="sureEvent" class="demo-raised-button" primary/>
-    <infoDialog></infoDialog>
+    <closeDialog></closeDialog>
   </div>
 </template>
 
 <script>
-  import infoDialog from "./../components/InfoDialog.vue"
+  import closeDialog from "./../components/closeDialog.vue"
   import $ from 'jquery'
   export default{
     data(){
@@ -24,7 +24,7 @@
     },
 
     components: {
-      infoDialog
+      closeDialog
     },
 
     methods: {
@@ -33,7 +33,6 @@
           this.postData()
         } else {
           console.log(this.$children);
-          this.$children[3].next = '#/login';
           this.$children[3].msg = "请输入账号与密码!";
           this.$children[3].dialog = true;
         }
@@ -56,7 +55,6 @@
               that.$router.push({name: 'index'})
             },
             error: function (data) {
-              that.$children[3].next = '#/login';
               that.$children[3].msg = "账号与密码错误!";
               that.$children[3].dialog = true;
             }

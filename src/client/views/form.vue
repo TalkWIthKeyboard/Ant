@@ -6,12 +6,12 @@
     <mu-auto-complete hintText="请输入终点" labelFloat v-model="endPoint" label="终点" :dataSource="dataSource"
                       :maxHeight="120"/>
     <mu-raised-button label="提交" @click="sureEvent" class="demo-raised-button" primary/>
-    <infoDialog></infoDialog>
+    <closeDialog></closeDialog>
   </div>
 </template>
 
 <script>
-  import infoDialog from "../components/InfoDialog.vue"
+  import closeDialog from "../components/closeDialog.vue"
   export default {
     data () {
       return {
@@ -59,7 +59,7 @@
     },
 
     components: {
-      infoDialog
+      closeDialog
     },
 
     methods: {
